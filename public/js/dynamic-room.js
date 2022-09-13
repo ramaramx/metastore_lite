@@ -10,16 +10,11 @@ AFRAME.registerComponent('dynamic-room', {
       window.alert('Please add a room name in the URL, eg. ?room=myroom');
     }
 
+    var isMultiuser = params.hasOwnProperty('room');
     var webrtc = params.hasOwnProperty('webrtc');
     var adapter = webrtc ? 'easyrtc' : 'wseasyrtc';
     var voice = params.hasOwnProperty('voice');
     
-    // Set local user's name
-    var player = document.getElementById('player');
-    var myNametag = player.querySelector('.nametag');
-    myNametag.setAttribute('text', 'value', params.username);
-    
-    // Setup networked-scene
     var networkedComp = {
       room: params.room,
       adapter: adapter,

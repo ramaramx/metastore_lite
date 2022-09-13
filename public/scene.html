@@ -11,13 +11,13 @@
     
     <!-- networked -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
+    <script src="https://unpkg.com/networked-aframe@^0.10.0/dist/networked-aframe.min.js"></script>
     <script src="/easyrtc/easyrtc.js"></script>
     <script src="/dist/networked-aframe.js"></script>
 
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
-    <script src="/js/simple-navmesh.js"></script>
-    <script src="/js/spawn-in-circle.component.js"></script>
-    <script src="/js/dynamic-room.component.js"></script>
+    <script src="./js/simple-navmesh.js"></script>
+    <script src="./js/spawn-in-circle.component.js"></script>
     <script>
       // see issue https://github.com/networked-aframe/networked-aframe/issues/267
       NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
@@ -43,8 +43,11 @@
 
   </head>
   <body>
-    <a-scene dynamic-room
-    networked-scene
+    <a-scene networked-scene="
+    room: basic;
+    debug: true;
+    adapter: wseasyrtc;
+  "
       renderer="alpha:true;physicallyCorrectLights:true;colorManagement:true;exposure:2;toneMapping:ACESFilmic;"
       background="color:#2b2b2b;"
       reflection="directionalLight:a-light#dirlight;"
